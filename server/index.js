@@ -25,7 +25,7 @@ var sockets=[]
 
 io.on('connection', socket=> {
 
-    console.log('test connected')
+    console.log('connected')
     var addedUser = false;
 
     socket.on("user joined", (username)=> {
@@ -58,14 +58,14 @@ io.on('connection', socket=> {
         })
     })
 
-    //socket.on("send step", (data)=> {
-    //    msgCount = msgCount + 1
-    //    console.log('msgCount:', msgCount)
-    //    socket.broadcast.emit('steps', {
-    //        username: socket.username,
-    //        d: data
-    //    })
-    //})
+    socket.on("send step", (data)=> {
+        msgCount = msgCount + 1
+        console.log('msgCount:', msgCount)
+        socket.broadcast.emit('steps', {
+            username: socket.username,
+            d: data
+        })
+    })
 
     socket.on('disconnect', function () {
         console.log("disconnect", socket.username)
