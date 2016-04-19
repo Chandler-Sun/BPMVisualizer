@@ -4,11 +4,16 @@
 'use strict'
 
 let app = require('koa')()
-var serve = require('koa-static')
+var serve = require('lb-koa-static')
 let server = require('http').createServer(app.callback())
 let io = require('socket.io')(server)
 
 let port = process.env.PORT || 3000
+
+app.use(serve('city', {
+    prefix: 'city'
+}))
+
 
 app.use(serve(__dirname + '/static'))
 
@@ -16,9 +21,11 @@ var onlineUsers = []
 var numUsers = 0
 var msgCount = 0
 
+var sockets=[]
+
 io.on('connection', socket=> {
 
-    console.log('connected')
+    console.log('test connected')
     var addedUser = false;
 
     socket.on("user joined", (username)=> {
@@ -28,40 +35,40 @@ io.on('connection', socket=> {
         numUsers = numUsers + 1
         addedUser = true
         socket.broadcast.emit('user joined', {
-            username:socket.username,
-            numUsers:numUsers
+            username: socket.username,
+            numUsers: numUsers
         })
     })
 
     socket.on("send acc", (data)=> {
-        msgCount = msgCount+1
-        console.log('msgCount:',msgCount)
+        msgCount = msgCount + 1
+        console.log('msgCount:', msgCount)
         socket.broadcast.emit('acc', {
-            username:socket.username,
-            d:data
+            username: socket.username,
+            d: data
         })
     })
 
     socket.on('send bpm', data=> {
-        msgCount = msgCount+1
-        console.log('msgCount:',msgCount)
+        msgCount = msgCount + 1
+        //console.log('msgCount:', msgCount)
         socket.broadcast.emit('bpm', {
-            username:socket.username,
-            d:data
+            username: socket.username,
+            d: data
         })
     })
 
-    socket.on("send step", (data)=> {
-        msgCount = msgCount+1
-        console.log('msgCount:',msgCount)
-        socket.broadcast.emit('steps', {
-            username:socket.username,
-            d:data
-        })
-    })
+    //socket.on("send step", (data)=> {
+    //    msgCount = msgCount + 1
+    //    console.log('msgCount:', msgCount)
+    //    socket.broadcast.emit('steps', {
+    //        username: socket.username,
+    //        d: data
+    //    })
+    //})
 
     socket.on('disconnect', function () {
-        console.log("disconnect",socket.username)
+        console.log("disconnect", socket.username)
         if (addedUser) {
             numUsers = numUsers - 1
             socket.broadcast.emit('user left', {
@@ -69,7 +76,7 @@ io.on('connection', socket=> {
                 numUsers: numUsers
             });
         }
-  });
+    });
 })
 
 server.listen(port, function () {
@@ -79,7 +86,7 @@ server.listen(port, function () {
 var bonjour = require('bonjour')()
 
 // advertise an HTTP server on port 3000
-var theService = bonjour.publish({ name: 'BPM Center', type: 'http', port: port })
+var theService = bonjour.publish({name: 'BPM Center Blake', type: 'http', port: port})
 
 
 var livereload = require('livereload');

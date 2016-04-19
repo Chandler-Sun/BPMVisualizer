@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebGL Audio Viz</title>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var baseSpeed = 1.5e-3;
+        var max = 0;
+        var min = 0;
+        var frequencyData = 0;
+        var timeDomainData = 0;
+
+        var socket = io()
+        //监听
+        var BUFFER_LENGTH = 512;
+        var theTimeByteData = [];
+        var theFreqByteData = [];
+
+        var msgCount = 0;
+
+        for (var i = BUFFER_LENGTH; i >= 0; i--) {
+            theTimeByteData.push(0);
+            theFreqByteData.push(0);
+        }
+        ;
+
+        socket.on('broadcast', function (data) {
+            console.log("broadcast:")
+            console.log(data)
+        })
+
+        socket.on('acc', function (data) {
+            max = Number(data.d) > max ? Number(data.d) : max
+            min = Number(data.d) < min ? Number(data.d) : min
+            //theTimeByteData.push(Math.abs(data.d)*2);
+            msgCount = msgCount + 1
+//            console.log('msgCount:', msgCount)
+            console.log("data:" + data.d)
+            frequencyData = data.d * 200
+            console.log(frequencyData)
+//            $("#acc").text(data.d)
+//            theTimeByteData.shift(1);
+        })
+
+        var SpeedScale = {
+            max: 0.01,
+            min: 0.001
+        }
+        //        function map(n,scale){
+        //
+        //        }
+        socket.on('bpm', function (data) {
+//            msgCount = msgCount + 1
+//            console.log('msgCount:', msgCount)
+//            $("#bpm").text(data.d)
+//            console.log("bpm:")
+            console.log("bpm data:"+data.d)
+            var bpm = Math.abs(Number(data.d))
+            var x = ((bpm - 140) / (190 - 140)) / 100
+            if (x == 0) {
+                baseSpeed = SpeedScale.min
+            } else {
+                baseSpeed = x
+            }
+            console.log("bpm:" + x)
+        })
+
+        socket.on('steps', function (data) {
+            msgCount = msgCount + 1
+            console.log('msgCount:', msgCount)
+//            $("#steps").text(data.d)
+        })
+
+        socket.on('user joined', function (data) {
+//            $("#username").text(data.username)
+        })
+    </script>
+</head>
+<body>
+
+<canvas id="gl-canvas"></canvas>
+<canvas id="viz-canvas"></canvas>
+
+<div class="menu" style="display: none">
+    <div class="close">- hide options</div>
+    <p>Effects</p>
+    <ul class="effects">
+        <li data-index="0">Liquid gem</li>
+        <li data-index="1">Cityscape</li>
+        <li data-index="2">Spherical lines</li>
+        <li data-index="3">Waves</li>
+        <li data-index="4">Elastic cube</li>
+    </ul>
+    <p>Source</p>
+    <ul>
+        <li class="mic">Microphone</li>
+        <li class="track">Track</li>
+    </ul>
+    <p class="small">tip: Scroll for more info</p>
+</div>
+
+<div class="menu-button" style="display: none"><span>+</span> show options</div>
+
+<!--<script type="text/javascript" src="js/leap2.js"></script>-->
+<!--<script type="text/javascript" src="js/Stats.js"></script>-->
+<script type="text/javascript" src="squareroot-min-76.js"></script>
+
+<script type="text/javascript" src="soundviz-min.js"></script>
+
+<!--
+<script type="text/javascript" src="js/Key.js"></script>
+<script type="text/javascript" src="js/Menu.js"></script>
+<script type="text/javascript" src="js/LeapWrapper.js"></script>
+<script type="text/javascript" src="js/audio/SoundAnalyser.js"></script>
+<script type="text/javascript" src="js/audio/SoundVisualizer.js"></script>
+
+<script type="text/javascript" src="js/VisualizerCollection.js"></script>
+<script type="text/javascript" src="js/EffectCollection.js"></script>
+
+<script type="text/javascript" src="js/effects/Vignette.js"></script>
+<script type="text/javascript" src="js/effects/Blur.js"></script>
+<script type="text/javascript" src="js/effects/GlowChromaticDist.js"></script>
+<script type="text/javascript" src="js/effects/ScanLines.js"></script>
+<script type="text/javascript" src="js/effects/NoEffect.js"></script>
+
+<script type="text/javascript" src="js/objects/StrechingCube.js"></script>
+<script type="text/javascript" src="js/objects/LineSphere.js"></script>
+<script type="text/javascript" src="js/objects/SkyscraperLane.js"></script>
+<script type="text/javascript" src="js/objects/Gems.js"></script>
+<script type="text/javascript" src="js/objects/Pyramids.js"></script>
+
+<script type="text/javascript" src="js/geometry/LineSphereGeometry.js"></script>
+<script type="text/javascript" src="js/geometry/Skyscraper.js"></script>
+<script type="text/javascript" src="js/geometry/Freeway.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+ -->
+
+<!--<script>-->
+<!--if (location.host.indexOf('localhost') > -1 || location.host.indexOf('192.168') > -1) {-->
+<!--document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');-->
+<!--}-->
+<!--</script>-->
+
+</body>
+</head>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

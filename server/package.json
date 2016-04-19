@@ -12,6 +12,7 @@
     "bonjour": "^3.2.2",
     "koa": "^1.2.0",
     "koa-static": "^2.0.0",
+    "lb-koa-static": "^2.1.0",
     "livereload": "^0.4.1",
     "socket.io": "^1.4.5"
   }
