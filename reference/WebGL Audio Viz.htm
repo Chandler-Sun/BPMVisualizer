@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://work.bartekdrozdz.com/soundviz/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>WebGL Audio Viz</title>
+
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
+<link rel="stylesheet" href="./WebGL Audio Viz_files/style.css">
+
+<link type="text/css" rel="stylesheet" href="chrome-extension://ckphchjljlekndhjifdfpmmnlaijimcd/style.css"></head>
+<body screen_capture_injected="true" data-feedly-mini="yes">
+
+<canvas id="gl-canvas" width="1398" height="761"></canvas>
+<canvas id="viz-canvas" width="128" height="64"></canvas>
+
+<div class="menu">
+    <div class="close">- hide options</div>
+    <p>Effects</p>
+    <ul class="effects">
+        <li data-index="0" class="selected">Liquid gem</li>
+        <li data-index="1" class="">Cityscape</li>
+        <li data-index="2" class="">Spherical lines</li>
+        <li data-index="3" class="">Waves</li>
+        <li data-index="4" class="">Elastic cube</li>
+    </ul>
+    <p>Source</p>
+    <ul>
+        <li class="">Microphone</li>
+        <li class="selected">Track</li>
+    </ul>
+    <p class="small">tip: Scroll for more info</p>
+</div>
+
+<div class="menu-button" style="opacity: 0; display: none;"><span>+</span> show options</div>
+
+<script type="text/javascript" src="./WebGL Audio Viz_files/leap2.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/Stats.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/squareroot-min-76.js"></script>
+
+<!-- <script type="text/javascript" src="./WebGL Audio Viz_files/soundviz-min.js"></script> -->
+
+<script type="text/javascript" src="./WebGL Audio Viz_files/Key.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/Menu.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/LeapWrapper.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/SoundAnalyser.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/SoundVisualizer.js"></script>
+
+<script type="text/javascript" src="./WebGL Audio Viz_files/VisualizerCollection.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/EffectCollection.js"></script>
+
+<script type="text/javascript" src="./WebGL Audio Viz_files/Vignette.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/Blur.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/GlowChromaticDist.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/ScanLines.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/NoEffect.js"></script>
+
+<script type="text/javascript" src="./WebGL Audio Viz_files/StrechingCube.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/LineSphere.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/SkyscraperLane.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/Gems.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/Pyramids.js"></script>
+
+<script type="text/javascript" src="./WebGL Audio Viz_files/LineSphereGeometry.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/Skyscraper.js"></script>
+<script type="text/javascript" src="./WebGL Audio Viz_files/Freeway.js"></script>
+
+<script type="text/javascript" src="./WebGL Audio Viz_files/main.js"></script>
+
+
+
+<script>
+    if(location.host.indexOf('localhost') > -1 || location.host.indexOf('192.168') > -1) {
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<iframe id="rdbIndicator" width="100%" height="270" border="0" src="./WebGL Audio Viz_files/indicator.html" style="display: none; border: 0; position: fixed; left: 0; top: 0; z-index: 2147483647"></iframe></body><div></div><div></div></html>

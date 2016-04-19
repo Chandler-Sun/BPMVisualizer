@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Misfit 跑调 比赛面板</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="stats">
+	用户: <span id="username"></span><br/>
+	BPM: <span id="bpm"></span><br/>
+	当前步数：<span id="steps"></span><br/>
+	加速度： <span id="acc"></span><br/>
+	<br>
+</div>
+
+<div id="loading"></div>
+
+<script>
+    
+</script>
+<script src="js/ATUtil.js"></script>
+<script src="js/three.min.js"></script>
+<script src="js/RequestAnimationFrame.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/ImprovedNoise.js"></script>
+<script src="js/Visualizer.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/network.js"></script>
+<script src="js/main.js"></script>
+<script>
+	  document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+  ':35729/livereload.js?snipver=1"></' + 'script>')
+	</script>
+</body>
+</html>
