@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+        var socket = io()
+        var username = "手机端天行者" + new Date().getTime()
+        socket.emit('mobile joined', username)
+
+        //        收到acc事件
+        socket.on("acc", function (data) {
+
+        })
+
+        socket.on('reject', function (data) {
+            $("#users").text(data)
+        })
+
+        socket.on('change name success', function () {
+            console.log("修改成功")
+        })
+
+        $(function () {
+            $("#change").on('click', function () {
+                socket.emit('change name', $("#username").val() || "未知用户")
+            })
+
+            $("#acc-minus").on('click', function () {
+                var val = Number($("#acc").text()) - 1
+                $("#acc").text(val)
+                socket.emit('send acc', val)
+            })
+            $("#acc-plus").on("click", function () {
+                var val = Number($("#acc").text()) + 1
+                $("#acc").text(val)
+                socket.emit('send acc', val)
+            })
+            $("#bpm-minus").on('click', function () {
+                var val = Number($("#bpm").text()) - 1
+                $("#bpm").text(val)
+                socket.emit('send bpm', val)
+            })
+            $("#bpm-plus").on("click", function () {
+                var val = Number($("#bpm").text()) + 1
+                $("#bpm").text(val)
+                socket.emit('send bpm', val)
+            })
+            $("#step-minus").on('click', function () {
+                var val = Number($("#step").text()) - 1
+                $("#step").text(val)
+                socket.emit('send step', val)
+            })
+            $("#step-plus").on("click", function () {
+                var val = Number($("#step").text()) + 1
+                $("#step").text(val)
+                socket.emit('send step', val)
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="text" id="username" style="font-size: 30px;">
+<input type="button" value="修改" id="change">
+<br>
+<br>
+<br>
+<br>
+
+<div>
+    send acc:
+    <input type="button" value="-" id="acc-minus">
+    &nbsp;<span id="acc">0</span>&nbsp;
+    <input type="button" value="+" id="acc-plus">
+</div>
+<br>
+
+<div>
+    send bpm:
+    <input type="button" value="-" id="bpm-minus">
+    &nbsp;<span id="bpm">0</span>&nbsp;
+    <input type="button" value="+" id="bpm-plus">
+</div>
+<br>
+
+<div>
+    send step:
+    <input type="button" value="-" id="step-minus">
+    &nbsp;<span id="step">0</span>&nbsp;
+    <input type="button" value="+" id="step-plus">
+</div>
+</body>
+</html>

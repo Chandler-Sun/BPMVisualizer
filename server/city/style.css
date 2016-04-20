@@ -13,98 +13,122 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
+
 #gl-canvas {
     position: absolute;
     top: 0px;
     left: 0px;
 }
+
 #viz-canvas {
     position: absolute;
     bottom: 0px;
     right: 0px;
 }
-.menu-button {
+
+/*.menu-button {*/
+/*position: absolute;*/
+/*top: 0px;*/
+/*left: 0px;*/
+/*text-transform: lowercase;*/
+/*font-size: 0.8em;*/
+/*color: #c8c8c8;*/
+/*background-color: rgba(0, 0, 0, 0.3);*/
+/*padding: 8px 18px 13px 13px;*/
+/*opacity: 0;*/
+/*-webkit-transition: all 0.2s ease;*/
+/*}*/
+/*.menu-button span {*/
+/*font-size: 1.2em;*/
+/*}*/
+/*.menu-button:hover {*/
+/*cursor: pointer;*/
+/*color: #fff;*/
+/*}*/
+/*.menu {*/
+/*position: absolute;*/
+/*color: #c8c8c8;*/
+/*top: 0px;*/
+/*left: 0px;*/
+/*background-color: rgba(0, 0, 0, 0.3);*/
+/*width: 160px;*/
+/*-webkit-transition: all 0.2s ease;*/
+/*}*/
+/*.menu .close {*/
+/*position: absolute;*/
+/*right: 10px;*/
+/*top: 10px;*/
+/*font-size: 0.8em;*/
+/*}*/
+/*.menu .close:hover {*/
+/*cursor: pointer;*/
+/*color: #fff;*/
+/*}*/
+/*.menu p {*/
+/*padding: 7px 0px 0px 10px;*/
+/*margin: 0;*/
+/*letter-spacing: 0.02em;*/
+/*font-size: 0.8em;*/
+/*text-transform: lowercase;*/
+/*cursor: default;*/
+/*}*/
+/*.menu p:first-of-type {*/
+/*margin-top: 30px;*/
+/*}*/
+/*.menu p.small {*/
+/*color: #808080;*/
+/*font-size: 0.7em;*/
+/*}*/
+/*.menu ul {*/
+/*list-style-type: none;*/
+/*padding: 0;*/
+/*margin: 6px 0 6px 0;*/
+/*}*/
+/*.menu li {*/
+/*position: relative;*/
+/*text-transform: lowercase;*/
+/*padding: 4px 0px 4px 10px;*/
+/*font-size: 0.8em;*/
+/*letter-spacing: -0.01em;*/
+/*text-indent: 0.7em;*/
+/*cursor: default;*/
+/*}*/
+/*.menu li.selected:before {*/
+/*content: ' ';*/
+/*position: absolute;*/
+/*width: 8px;*/
+/*height: 100%;*/
+/*top: 0px;*/
+/*left: 0px;*/
+/*background-color: #ffffff;*/
+/*}*/
+/*.menu li:not(.selected):hover {*/
+/*background-color: rgba(255, 255, 255, 0.2);*/
+/*cursor: pointer;*/
+/*}*/
+/*.stats {*/
+/*position: absolute;*/
+/*bottom: 60px;*/
+/*right: 0px;*/
+/*}*/
+
+.bpmContainer {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    text-transform: lowercase;
-    font-size: 0.8em;
-    color: #c8c8c8;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 8px 18px 13px 13px;
-    opacity: 0;
-    -webkit-transition: all 0.2s ease;
+    left: 50%;
+    top: 5%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
 }
-.menu-button span {
-    font-size: 1.2em;
+
+.bpmNumber {
+    font-size: 55px;
+    font-weight: bold;
+    margin-top: 20px;
 }
-.menu-button:hover {
-    cursor: pointer;
-    color: #fff;
-}
-.menu {
-    position: absolute;
-    color: #c8c8c8;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(0, 0, 0, 0.3);
-    width: 160px;
-    -webkit-transition: all 0.2s ease;
-}
-.menu .close {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 0.8em;
-}
-.menu .close:hover {
-    cursor: pointer;
-    color: #fff;
-}
-.menu p {
-    padding: 7px 0px 0px 10px;
-    margin: 0;
-    letter-spacing: 0.02em;
-    font-size: 0.8em;
-    text-transform: lowercase;
-    cursor: default;
-}
-.menu p:first-of-type {
-    margin-top: 30px;
-}
-.menu p.small {
-    color: #808080;
-    font-size: 0.7em;
-}
-.menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 6px 0 6px 0;
-}
-.menu li {
-    position: relative;
-    text-transform: lowercase;
-    padding: 4px 0px 4px 10px;
-    font-size: 0.8em;
-    letter-spacing: -0.01em;
-    text-indent: 0.7em;
-    cursor: default;
-}
-.menu li.selected:before {
-    content: ' ';
-    position: absolute;
-    width: 8px;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    background-color: #ffffff;
-}
-.menu li:not(.selected):hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-}
-.stats {
-    position: absolute;
-    bottom: 60px;
-    right: 0px;
-}
+

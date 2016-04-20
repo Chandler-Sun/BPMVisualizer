@@ -226,8 +226,8 @@ var Blur = function (a) {
             ,
             a.update = function () {
                 //console.log(h)
-                d.getByteFrequencyData(g),
-                    d.getByteTimeDomainData(h);
+                //d.getByteFrequencyData(g),
+                //    d.getByteTimeDomainData(h);
                 g = new Uint8Array(a.binCount),
                     h = new Uint8Array(a.binCount);
                 for (var ii = 0; ii < 512; ii++) {
@@ -5110,7 +5110,7 @@ var sound = new SoundAnalyser();
 
 var volume, sensitivity;
 
-var useMic = function() {
+var useMic = function () {
     volume = 0;
     sensitivity = 1;
     sound.setVolume(volume);
@@ -5118,15 +5118,16 @@ var useMic = function() {
     sound.connectMic();
 }
 
-var useTrack = function() {
+var useTrack = function () {
     volume = 1;
     sensitivity = 1;
     sound.setVolume(volume);
     sound.setSesitivity(sensitivity);
-    sound.connectTrack('assets/spy.mp3');
+    //sound.connectTrack('assets/spy.mp3');
+    //sound.connectTrack('assets/MGK,DJ Xplosive,Dubo - EST 4 Life.mp3');
 }
 
-if(USEMIC) {
+if (USEMIC) {
     useMic();
 } else {
     useTrack();
@@ -5138,7 +5139,7 @@ var root = new SQR.Transform();
 
 var stats = new Stats();
 stats.domElement.setAttribute('class', 'stats');
-if(DEBUG) document.body.appendChild(stats.domElement);
+if (DEBUG) document.body.appendChild(stats.domElement);
 
 var engine = new SQR.SquarerootGL(document.getElementById('gl-canvas'));
 engine.setSize(window.innerWidth, window.innerHeight);
@@ -5146,13 +5147,13 @@ engine.setSize(window.innerWidth, window.innerHeight);
 var target = engine.createFrameBuffer();
 
 var projection = new SQR.ProjectionMatrix();
-projection.perspective(45, window.innerWidth/window.innerHeight, 1, 10000);
+projection.perspective(45, window.innerWidth / window.innerHeight, 1, 10000);
 engine.setProjection(projection);
 
 var camera = new SQR.Transform();
 root.add(camera);
 
-var resetCamera = function() {
+var resetCamera = function () {
     camera.position.set(0, 0, 100);
     camera.rotation.set(0, 0, 0);
     camera.lookAt(null);
@@ -5164,49 +5165,6 @@ var nextTimeout;
 var vizTTL = 45000;
 var interactionIdleTTL = 20000;
 
-// Key.down(Key.SPACE, function() {
-//     moveToNext();
-// });
-
-// Key.down("Q", function() {
-//     volume += 0.1;
-//     sound.setVolume(volume);
-//     console.log(volume, sensitivity);
-// });
-
-// Key.down("A", function() {
-//     volume -= 0.1;
-//     sound.setVolume(volume);
-//     console.log(volume, sensitivity);
-// });
-
-// Key.down("P", function() {
-//     sensitivity += 0.1;
-//     sound.setSesitivity(sensitivity);
-//     console.log(volume, sensitivity);
-// });
-
-// Key.down("L", function() {
-//     sensitivity -= 0.1;
-//     sound.setSesitivity(sensitivity);
-//     console.log(volume, sensitivity);
-// });
-
-
-// var moveToNext = function() {
-// next();
-// scheduleNext(vizTTL);
-// }
-
-// var scheduleNext = function(time) {
-// clearTimeout(nextTimeout);
-// nextTimeout = setTimeout(moveToNext, time);
-// }
-
-// var onLeapToggle = function(isActive) {
-// if(!isActive) scheduleNext(interactionIdleTTL);
-// else clearTimeout(nextTimeout);
-// }
 
 var leap = new LeapWrapper();
 
@@ -5234,7 +5192,7 @@ var compositions = [
     ['strechcube', 'scanlines']
 ];
 
-var setEffect = function(index) {
+var setEffect = function (index) {
     resetCamera();
     visualizer.use(compositions[index][0], camera, leap);
     effect.use(compositions[index][1]);
@@ -5244,14 +5202,14 @@ Menu.onEffect(setEffect);
 Menu.onMic(useMic);
 Menu.onTrack(useTrack);
 
-sound.onBeat = function() {
-    if(DEBUG) debugViz.onBeat();
+sound.onBeat = function () {
+    if (DEBUG) debugViz.onBeat();
 
     visualizer.onBeat(camera);
     effect.onBeat();
 }
 
-var loop = function() {
+var loop = function () {
     stats.begin();
     requestAnimFrame(loop);
 
@@ -5259,11 +5217,11 @@ var loop = function() {
     leap.tick();
 
     sound.update();
-    if(DEBUG) debugViz.draw(sound);
+    if (DEBUG) debugViz.draw(sound);
     visualizer.update(sound, camera, leap);
 
     // engine.render(root, camera);
-    engine.render(root, camera, { target: target });
+    engine.render(root, camera, {target: target});
     effect.render(target, root, camera, leap);
 
 

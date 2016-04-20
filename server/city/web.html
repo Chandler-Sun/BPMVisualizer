@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+        var socket = io()
+        var username = "天行者" + new Date().getTime()
+        socket.emit('web joined', username)
+
+        //        收到acc事件
+        socket.on("acc", function (data) {
+            $("#acc").text(data.d)
+        })
+
+        socket.on("bpm", function (data) {
+            $("#bpm").text(data.d)
+        })
+
+        socket.on("step", function (data) {
+            $("#step").text(data.d)
+        })
+
+        //        有手机用户加入
+        socket.on('new users', function (data) {
+            console.log(data)
+            $("#users").text("房间当前用户列表:" + data.usernames.join(","))
+        })
+        socket.on('current user', function (data) {
+            console.log(data)
+            $("#user").text("房间当前用户:" + data)
+        })
+        socket.on('reject', function (data) {
+            $("#users").text(data)
+        })
+    </script>
+</head>
+<body style="background-color: yellow">
+<div><span id="users"></span></div>
+<br>
+<div><span id="user" style="font-size: 30px;"></span></div>
+
+<ul>
+    <li class="acc">
+        acc: <span id="acc">0</span>
+    </li>
+    <li class="bpm">
+        bpm: <span id="bpm">0</span>
+    </li>
+    <li>
+        step: <span id="step">0</span>
+    </li>
+</ul>
+<script>
+    //    $(document).ready(function () {
+    //
+    //    })
+</script>
+</body>
+</html>
