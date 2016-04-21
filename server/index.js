@@ -133,8 +133,8 @@ io.on('connection', socket=> {
     })
 
     socket.on('send bpm', data=> {
-        msgCount = msgCount + 1
-        console.log('msgCount:', msgCount)
+        //msgCount = msgCount + 1
+        //console.log('msgCount:', msgCount)
         websockets.sockets[socket.number] && websockets.sockets[socket.number].emit('bpm', {
             username: socket.username,
             d: data
@@ -142,8 +142,8 @@ io.on('connection', socket=> {
     })
 
     socket.on("send step", (data)=> {
-        msgCount = msgCount + 1
-        console.log('msgCount:', msgCount)
+        //msgCount = msgCount + 1
+        //console.log('msgCount:', msgCount)
         websockets.sockets[socket.number] && websockets.sockets[socket.number].emit('step', {
             username: socket.username,
             d: data

@@ -230,9 +230,8 @@ var Blur = function (a) {
                 //    d.getByteTimeDomainData(h);
                 g = new Uint8Array(a.binCount),
                     h = new Uint8Array(a.binCount);
-                for (var ii = 0; ii < 512; ii++) {
-                    g[ii] = frequencyData
-                    h[ii] = timeDomainData
+                for (var k = 0; k < 512; k++) {
+                    g[k] = frequencyData
                 }
 
                 for (var b = 0; b < a.binCount; b++)
